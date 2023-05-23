@@ -376,14 +376,21 @@ def crearReporte(lista):
     inicio += "<center><img src=\"usac.png\"/></center>\n"
 
     inicio += "<br>"
-    
-    
+
+
+    inicio += "<center>\n<table border=\"1\">\n<tr><th><font size=\"5\" color=\"black\">No.</font></th><th><font size=\"5\" color=\"black\">Nombre</font></th><th><font size=\"5\" color=\"black\">Nota</font></th></tr>\n"
+
+    contador = 1
     for a in lista:
         if a.nota >= 61:
-            inicio += "<center>\n<table border=\"1\"><tr><td><font size =\"5\", color =\"blue\">Nombre: " + a.nombre + " "+ " Nota: " + str(a.nota) + "</font></td></tr></center>\n"
-        elif a.nota <=60:
-            inicio += "<center>\n<table border=\"1\"><tr><td><font size =\"5\", color =\"red\">Nombre: " + a.nombre + " "+ "Nota: " + str(a.nota) + "</font></td></tr></center>\n"
-    inicio += "<center>\n<table border=\"1\"><tr><td><font size =\"5\", color =\"black\">El numero de estudiantes en la clase son: " + str(cont) +"</font></td></tr></center>\n"
+            inicio += "<tr><td><font size=\"5\" color=\"black\">" + str(contador) + "</font></td><td><font size=\"5\" color=\"blue\">" + a.nombre + "</font></td><td><font size=\"5\" color=\"blue\">" + str(a.nota) + "</font></td></tr>\n"
+        elif a.nota <= 60:
+            inicio += "<tr><td><font size=\"5\" color=\"black\">" + str(contador) + "</font></td><td><font size=\"5\" color=\"red\">" + a.nombre + "</font></td><td><font size=\"5\" color=\"red\">" + str(a.nota) + "</font></td></tr>\n"
+        contador += 1
+    
+    inicio += "</table></center>\n"
+    inicio += "<center>\n<table border=\"1\"><tr><td><font size=\"5\" color=\"black\">El numero de estudiantes en la clase es: " + str(cont) + "</font></td></tr></table></center>\n"
+
 
 
     #PARÁMETROS
@@ -396,20 +403,28 @@ def crearReporte(lista):
         if c == 'ASC':
             inicio += "<font size =\"5\", color =\"black\">Ascendente:\n</font>"
             cont=0
-            for i in ListaNota:
-                inicio += "<center>\n<tr><td><font size =\"5\", color =\"black\">Nombre:\n"+ ListaNombre[cont]+"Nota:\n"+ str(i) +"</font></td></tr></center>\n"
-                cont=cont+1
-               
+            inicio += "<center>\n<table border=\"1\">\n<tr><th><font size=\"5\" color=\"black\">Nombre</font></th><th><font size=\"5\" color=\"black\">Nota</font></th></tr>\n"
+
+            for i in ListaNota2:
+                inicio += "<tr><td><font size=\"5\" color=\"black\">" + ListaNombre2[cont] + "</font></td><td><font size=\"5\" color=\"black\">" + str(i) + "</font></td></tr>\n"
+                cont += 1
+
+            inicio += "</table></center>\n"
+
             #ordenarAscendentemente(lista)
 
         #DESC = Ordenar descendentemente las notas de los estudiantes.
         elif c == 'DESC':
             inicio += "<font size =\"5\", color =\"black\">Descendente:\n"
             cont=0
-            for i in ListaNota2:
-                inicio += "<center>\n<tr><td><font size =\"5\", color =\"black\">Nombre:\n"+ ListaNombre2[cont]+"Nota:\n"+ str(i) +"</font></td></tr></center>\n"
-                cont=cont+1
-              
+            inicio += "<center>\n<table border=\"1\">\n<tr><th><font size=\"5\" color=\"black\">Nombre</font></th><th><font size=\"5\" color=\"black\">Nota</font></th></tr>\n"
+
+            for i in ListaNota:
+                inicio += "<tr><td><font size=\"5\" color=\"black\">" + ListaNombre[cont] + "</font></td><td><font size=\"5\" color=\"black\">" + str(i) + "</font></td></tr>\n"
+                cont += 1
+
+            inicio += "</table></center>\n"
+
              #ordenarDescendentemente(lista)
          
         #APR = Obtener el número de estudiantes aprobados en el curso.
